@@ -1,20 +1,24 @@
 package com.springboot.angular.apiwebspringboot.ws.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
-
-import java.awt.PageAttributes.MediaType;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.angular.apiwebspringboot.ws.model.Client;
+import com.springboot.angular.apiwebspringboot.ws.service.ClientService;
 
 @RestController
 public class ClientController {
 
+	
+	@Autowired
+	ClientService clientService;
+	
   private Map<Integer, Client> clients;
 	
   Integer proxId=1;
@@ -31,7 +35,7 @@ public class ClientController {
   		return client;
   	}
 	
-	@RequestMapping(method=RequestMethod.GET, value="/clients", consumes = MediaType.APPLICATION_JASON_VALUE)
+	@RequestMapping(method=RequestMethod.GET, value="/clients", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public void search(){
 		System.out.println("HII!");
 	}
